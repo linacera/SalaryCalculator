@@ -20,5 +20,14 @@ class SalaryTest extends TestCase
         $response->assertSee('Welcome to Salary Calculator!!');
     }
 
+  /*  public function itStoresFile(){
+        Storage::fake('files');
+        $response = $this->json('POST', '/calculateSalary', [
+            'salary' => UploadedFile::fake()->create('sar.txt')
+        ]);
+
+        Storage::disk('files')->assertExists('salary.txt');
+    }*/
+
     
 }
