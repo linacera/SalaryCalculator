@@ -24,6 +24,9 @@ class Worker
     function getWorkerName(){
         return $this->workerName;
     }
+    function getSalary(){
+        return $this->salary;
+    }
 
     function findDailyHours($data){
         $simpleDailyHours = $this->extractDailyHours($data);

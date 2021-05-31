@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Storage;
 use App\Models\File;
-use App\Models\Worker;
+use App\Models\Facade;
 
 
 class SalaryController extends Controller
@@ -14,8 +14,11 @@ class SalaryController extends Controller
     function getRawSalary(Request $request){
         $file = new File($request->file('salary'));
         $contents = $file->getFileContent();
-        $worker = new worker($contents);
-        return('The amount to pay '.$worker->getWorkerName().' is:'.$worker->findSalary());
+        $workers = new Facade($contents);
+       // $rawWorkers = explode(PHP_EOL, $contents);
+
+       return view('output',['workers'=> $workers->getWorkers()]);
+
 
     }
 }
