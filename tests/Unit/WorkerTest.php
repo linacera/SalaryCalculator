@@ -4,15 +4,16 @@ namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 use App\Models\Worker;
-use App\Models\RUles;
+use App\Models\Rules;
 
 class WorkerTest extends TestCase
 {
     
      /** @test */
     public function itGetsPersonName(){
-        $workedTime = new Worker('Ana=hahaja');
-        $this->assertEquals("Ana",$workedTime->getWorkerName());
+        $input = "RENE=MO10:00-12:00,TU10:00-12:00,TH01:00-03:00,SA14:00-18:00,SU20:00-21:00";
+        $workedTime = new Worker($input);
+        $this->assertEquals("RENE",$workedTime->explodeWorkerName($input));
     }
 
     
@@ -39,11 +40,5 @@ class WorkerTest extends TestCase
         $output = ["MO"=>["10:00","12:00"],"TU"=>["10:00","12:00"],"TH"=>["01:00","03:00"],"SA"=>["14:00","18:00"],"SU"=>["20:00","21:00"]];
         $worker = new Worker($input);
         $this->assertSame($output,$worker->findDailyHours($input));
-    }
-
-
-    
-
-
-    
+    } 
 }

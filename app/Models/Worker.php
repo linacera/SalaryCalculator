@@ -2,15 +2,18 @@
 
 namespace App\Models;
 
+use App\Models\Calculate;
 
 class Worker
 {
     protected $workerName;
     protected $workedHours;
+    protected $salary;
 
     function __construct($data){
         $this->workerName = $this->explodeWorkerName($data);
         $this->workedHours = $this->findDailyHours($data);
+        $this->salary = $this->findSalary();
     }
 
     function explodeWorkerName($data){
@@ -21,7 +24,6 @@ class Worker
     function getWorkerName(){
         return $this->workerName;
     }
-
 
     function findDailyHours($data){
         $simpleDailyHours = $this->extractDailyHours($data);
@@ -44,6 +46,12 @@ class Worker
             $formattedDailyHours[$key] = $values;
         }
         return $formattedDailyHours;
+    }
+
+    function findSalary(){
+        $calculate = new Calculate($this->workedHours);
+        $salary = $calculate->calculateSalary();
+        return $salary;
     }
 
 }
