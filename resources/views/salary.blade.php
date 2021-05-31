@@ -8,24 +8,29 @@
         <meta charset="utf-8">
       
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-      
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet">
       </head>
     <body>
 
         <div class="container">
             <h1>Welcome to Salary Calculator!!</h1>
 
-            <form action="{{url('/calculateSalary')}}" enctype='multipart/form-data' method="post">
-                @csrf
-                <div class="row mb-3">
-                    <label for="salary">Upload your salary</label>
-                    <div class="col-sm-10">
-                        <input type='file' name="salary">
+            <div class="formContainer">
+                <form action="{{url('/calculateSalary')}}" enctype='multipart/form-data' method="post">
+                    @csrf
+                    <div class="row mb-3">
+                        <label for="salary" class="form-label">Upload salary list:</label>
+                        <div class="col-sm-10">
+                            <input type='file' name="salary" class="form-control">
+                        </div>
                     </div>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Calculate</button>
-            </form>
+    
+                    <div class="row mb-3">
+                        <button type="submit" class="btn btn-primary">Calculate</button>
+                    </div>
+                   
+                </form>
+            </div>
         </div>
     </body>
 
