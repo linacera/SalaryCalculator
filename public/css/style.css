@@ -1,0 +1,18 @@
+.container{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.error{
+    color: red;
+}
+
+.title{
+    margin-bottom: 10px;
+}
+
+.formContainer{
+    margin-top: 30px;
+    text-align: left;
+}
+
