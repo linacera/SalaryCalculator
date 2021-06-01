@@ -1,3 +1,31 @@
+#Salary calculator
+This program calculates a employee salary based in the hours, time of the day and day that employee worked.
+
+##Installation Process (Win):
+* Download and Install Laragon (full) from https://laragon.org/download/index.html
+* Restart your computer
+* Download this repo code unzip it and copy it to C:\laragon\www and change folder name to only: SalaryCalculator
+* Open Laragon and then open laragon terminal in the project route C:\laragon\www\SalaryCalculator and run: composer install
+* Start Laragon
+* Open a web browser and type salarycalculator.test
+* That's it, happy Testing!
+
+##Solution Overview
+
+To save the program rules three arrays were used. One storing the week and weekend days. Other to store the hours range and one to store the usd amount. 
+To calculate how much an employee has to recieve the next steps are followed:
+1. Split the input per days
+2. Then for each day determinate if it is week or weekend it will return 0 for week and 1 for weekend
+3. Then determinate the hour range for each day it will return de range id 1 for 00:01 - 09:00, 2 for 09:01 - 18:00 15 and 3 for 18:01 - 00:00 20 USD
+4. After that and extra calculation is made to determine the number of hours in that range.
+5. And then in the usd array ([1 => [25,30],2 => [15,20],3 => [20,25]]) is selected the usd amount using the range id obtained earlier to select the array key and then final int value is selected using the weekorweekend value, also obtained earlier and then this value is multiplied by the number of hours. For example for MONDAY that is a week day the weekOrWeekend value will be 0 and if the worked hours are from  10:00 to 12:00 the rangeId will be 2 then in the usd array the selected value will be usdArray[2][0] obtaining 15 and then is multiplied by the 2 hours giving 30 in total. 
+6. Finally, every day values are added to get the total salary.
+
+In this solution a Worker class was implemented to store the worker information: name, workedHours and Salary. And a Calculate class was created to manage the salary calculation process. Also a WorkerGenerator class was created to manage the workers creation process, this class is responsible for splitting the input file for each worker and then create the workers and also helps to validate that minimun 5 inputs are stored in the input file.
+A test input file called input.txt is available in the root folder.
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
