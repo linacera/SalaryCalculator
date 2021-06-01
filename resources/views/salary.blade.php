@@ -23,11 +23,17 @@
                         <div class="col-sm-10">
                             <input type='file' name="salary" class="form-control">
                         </div>
+                        @if($errors->has('salary'))
+                        <p class="error">{{ $errors->first('salary') }}</p>
+                        @endif
                     </div>
     
                     <div class="row mb-3">
                         <button type="submit" class="btn btn-primary">Calculate</button>
                     </div>
+                    @if($errors->has('workersError'))
+                        <p class="error">{{ $errors->first('workersError') }}</p>
+                    @endif
                    
                 </form>
             </div>

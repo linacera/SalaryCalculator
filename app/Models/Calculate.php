@@ -73,10 +73,24 @@ class Calculate
     }
 
     function getNumberOfHours($value){
-        $index1 = array_search($value[0], $this->dayHours);
-        $index2 = array_search($value[1], $this->dayHours);
+        $hour1 = $this->formatHour($value[0]);
+        $hour2 = $this->formatHour($value[1]);
+        $index1 = array_search($hour1, $this->dayHours);
+        $index2 = array_search($hour2, $this->dayHours);
         $hours = $index2 - $index1;
         return($hours);
+    }
+
+    function formatHour($hour){
+        if($hour == "18:01"){
+            return("18:00");
+        }elseif($hour == "09:01"){
+            return("09:00");
+        }elseif($hour == "00:01"){
+            return("00:00");
+        }else{
+            return $hour;
+        }
     }
 
     function getUsd($value, $range, $weekOrWeekend)
